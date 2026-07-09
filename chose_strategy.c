@@ -1,6 +1,6 @@
 #include "push_swap.h"
 
-int	is_startegy(char *str)
+int	what_is_startegy(char *str)
 {
 	if (ft_strcmp(str,"--simple") || ft_strcmp(str, "--medium") ||
 	ft_strcmp(str, "--complex") || ft_strcmp(str, "--adaptive"))

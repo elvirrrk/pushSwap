@@ -46,7 +46,7 @@ typedef struct	s_data {
 
 void		init_data(t_data *data);
 int			parsing(int argv, char **argc);
-int			is_startegy(char *str);
+int			what_is_startegy(char *str);
 t_strategy	chose_strategy(char *str);
 int			ft_isdigit(int c);
 int			ft_strcmp(const char *s1, const char *s2);
