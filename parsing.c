@@ -1,29 +1,19 @@
 #include "push_swap.c"
 
-int parsing(int argv, char **argc) // should return smth?
+int parsing(int argv, char **argc)
 {
 	int	i;
 	char bench[7];
-	char simple[]
-	char medium[];
-	char complex[];
-	char adaptive[];
 
 	i = 1;
 	bench = "--bench";
-	simple = "";
-	medium = "";
-	complex = "";
-	adaptive = "";
-
-	data->bench = 0;
-	data->strategy = ADAPTIVE;
 
 	if (!ft_strcmp(argc[i], bench))
 	{
 		data->bench = 1;
 		i++;
 	}
+
 	if (is_strategy(argc[i]))
 	{
 		data->strategy = chose_strategy(argc[i]);

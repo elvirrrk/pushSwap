@@ -22,7 +22,7 @@ typedef struct	s_stack {
 	struct s_stack	*next;
 } t_stack;
 
-typedef struct s_strategy {
+typedef enum e_strategy {
 	SIMPLE,
 	MEDIUM,
 	COMPLEX,
@@ -33,8 +33,8 @@ typedef struct	s_data {
 	t_stack	*a;
 	t_stack *b;
 
-	int	size_a;
-	int	size_b;
+	// int	size_a; maybe we will need it for compex algoritm
+	// int	size_b;
 
 	double	disorder;
 	int		bench; // 0 or 1 mean if bench trun on or not
@@ -44,6 +44,8 @@ typedef struct	s_data {
 
 } t_data;
 
+void		init_data(t_data *data);
+int			parsing(int argv, char **argc);
 int			is_startegy(char *str);
 t_strategy	chose_strategy(char *str);
 int			ft_isdigit(int c);
