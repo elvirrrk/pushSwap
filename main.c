@@ -5,7 +5,7 @@ int main (int argv, char **argc)
 	double	disorder;
 	if (argv < 2)
 		return (0);
-	if (parsing(char **argc)) // creating stack if everything ok
+	if (parsing(argv, **argc)) // creating stack if everything ok
 	{
 		write(2, "Error\n", 6);
 		return (1); 

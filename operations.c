@@ -1,1 +1,0 @@
-//  all comands (saq, sb, ss, pa, pb, etc.)
