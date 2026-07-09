@@ -17,13 +17,6 @@ typedef struct s_status {
 	int rrr;
 } t_status;
 
-typedef struct s_strategy {
-	SIMPLE,
-	MEDIUM,
-	COMPLEX,
-	ADAPTIVE
-} t_strategy;
-
 typedef struct s_data {
 	t_stack	*a;
 	t_stack *b;
@@ -31,7 +24,7 @@ typedef struct s_data {
 	int size_a;
 	int size_b;
 
-	int disorder; // ? int or more long
+	double disorder;
 	int bench; // 0 or 1 mean if bench trun on or not
 	
 	t_strategy strategy;

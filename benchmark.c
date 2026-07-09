@@ -1,0 +1,1 @@
+// *strategy(t_strategy strategy) for printing name
