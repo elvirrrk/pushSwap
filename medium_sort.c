@@ -1,4 +1,4 @@
-void medium_sort()
-{
+// void medium_sort(t_data data)
+// {
 	
-}
+// }

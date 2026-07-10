@@ -8,12 +8,9 @@ int main (int argv, char **argc)
 	if (argv <= 2)
 		return (0);
 	init_data(data);
-	if (parsing(argv, **argc)) // creating stack, chose strategy, if everything ok
-	{
-		write(2, "Error\n", 6);
-		return (1); 
-	}
-	disorder = measure_disorder();
+	parsing(argv, **argc); // creating stack, chose strategy, if everything ok
+	disorder = measure_disorder(data);
+	// execute algorithms
 	if (data->bench)
 		print_benchmark(data_here); // benchmark.c
 	free_data(data); // free.c

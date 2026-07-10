@@ -1,12 +1,12 @@
 #include "push_swap.c"
 
-int	is_bench(char *argc, t_data data)
+int	check_bench(char *argv, t_data data)
 {
 	char bench[7];
 
 	bench = "--bench";
 
-	if (ft_strcmp(argc, bench) != 0)
+	if (ft_strcmp(argv, bench) != 0)
 		return (0);
 	if (data->bench)
 		error();
@@ -14,33 +14,87 @@ int	is_bench(char *argc, t_data data)
 	return (1);
 }
 
-int	is_strategy(char *argc, t_data data)
+int	check_strategy(char *argv, t_data data)
 {
-	if (what_is_startegy(argc))
+	t_strategy	strategy;
+
+	if (ft_strcmp(argv,"--simple"))
+		strategy = SIMPLE;
+	else if (ft_strcmp(argv, "--medium"))
+		strategy = MEDIUM;
+	else if (ft_strcmp(argv, "--complex"))
+		strategy = COMPLEX;
+	else if (ft_strcmp(argv, "--adaptive"))
+		strategy = ADAPTIVE;
+	if (data->set_strategy)
 		return (0);
-	if (ft_strcmp(data->strategy, argc))
-		data->strategy = chose_strategy(argc);
+	data->strategy = strategy;
+	data->set_strategy = 1;
+	return (1);
 }
 
-int parsing(int argv, char **argc, t_data data)
+int	parse_number(char argv, t_data data)
 {
-	int	i;
+	int		number;
+	t_stack	*node;
 
-	i = 1;
-
-	while (i < 3)
+	number = ft_atoi(argv); // in atoi is check for only numbers
+	if (-2147483647 - 1 > number > 2147483647)
+		write_error();
+	data->size_a += 1;
+	node = data->stack_a;
+	while (node)
 	{
-		if (is_bench(argc[i], data))
-			i++;
-		if (is_strategy(argc[i], data))
-			i++;
+		if (node->value == node->next->value)
+			write_error();
+		node = node->next;
+	}
+	data->stack_a = ft_lstnew(number);
+	data->size_a += 1;
+}
+
+void	parsing(int argc, char **argv, t_data data)
+{
+	int		i;
+	int		j;
+    int		options;
+    int		result;
+	char	array[];
+
+    i = 1;
+    options = 0;
+    while (i < argc && options < 2)
+    {
+        result = check_bench(argv[i], data);
+        if (result == -1)
+            write_error();
+        if (result == 1)
+        {
+            options++;
+            i++;
+            continue ;
+        }
+        result = check_strategy(argv[i], data);
+        if (result == -1)
+            write_error();
+        if (result == 1)
+        {
+            options++;
+            i++;
+            continue ;
+        }
+        break ;
+    }
+
+	//  if input "1 2 3 4 5" as string
+	if (i == argc - 1)
+	{
+		j = 0;
+		array = ft_split(argv[i], " ");
+		while (array[j])
+        	parse_number(array[j++], data);
 	}
 
-	// check input for arguments that are not integers,
-	// integers outside the valid range, or duplicate values.
-	// if (err) 
-	// 	return (1);
-
-	// create stack and send as parameter in func below
-	return(0);
+	while (i < argc)
+        parse_number(argv[i++], data);
 }
