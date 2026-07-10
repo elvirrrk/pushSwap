@@ -1,20 +1,19 @@
-#include "push_swap.c"
+#include "push_swap.h"
 
-int	check_bench(char *argv, t_data data)
+int	check_bench(char *argv, t_data *data)
 {
-	char bench[7];
+	const char *bench_str;
+	bench_str = "--bench";
 
-	bench = "--bench";
-
-	if (ft_strcmp(argv, bench) != 0)
+	if (ft_strcmp(argv, bench_str) != 0)
 		return (0);
 	if (data->bench)
-		error();
+		write_error();
 	data->bench = 1;
 	return (1);
 }
 
-int	check_strategy(char *argv, t_data data)
+int	check_strategy(char *argv, t_data *data)
 {
 	t_strategy	strategy;
 
@@ -33,33 +32,34 @@ int	check_strategy(char *argv, t_data data)
 	return (1);
 }
 
-int	parse_number(char argv, t_data data)
+void	parse_number(char *argv, t_data *data)
 {
-	int		number;
+	long	num;
 	t_stack	*node;
 
-	number = ft_atoi(argv); // in atoi is check for only numbers
-	if (-2147483647 - 1 > number > 2147483647)
+	num = ft_atoi(argv); // in atoi is check for only numbers
+	if (num > 2147483647 || -2147483648 < num)
 		write_error();
-	data->size_a += 1;
-	node = data->stack_a;
+	node = data->a;
+	// check for dup
 	while (node)
 	{
-		if (node->value == node->next->value)
+		if (node->value == num)
 			write_error();
 		node = node->next;
 	}
-	data->stack_a = ft_lstnew(number);
+	node = ft_lstnew(num);
+	ft_lstadd_back(&data->a, node);
 	data->size_a += 1;
 }
 
-void	parsing(int argc, char **argv, t_data data)
+void	parsing(int argc, char **argv, t_data *data)
 {
 	int		i;
 	int		j;
     int		options;
     int		result;
-	char	array[];
+	char	**array;
 
     i = 1;
     options = 0;
@@ -90,7 +90,7 @@ void	parsing(int argc, char **argv, t_data data)
 	if (i == argc - 1)
 	{
 		j = 0;
-		array = ft_split(argv[i], " ");
+		array = ft_split(argv[i], ' ');
 		while (array[j])
         	parse_number(array[j++], data);
 	}

@@ -4,6 +4,7 @@
 # include <unistd.h>
 # include <stddef.h>
 # include <stdlib.h>
+# include <stdio.h> // only for testing, remove after finish
 
 typedef struct	s_status {
 	int	sa;
@@ -66,10 +67,10 @@ char	*ft_substr(char const *s, unsigned int start, size_t len);
 
 // push swap function
 
-void	adaptive_sort(double disorder, t_data data);
+void	adaptive_sort(t_data data);
 void	init_data(t_data *data);
-double	measure_disorder(t_data data);
-void	parsing(int argc, char **argv, t_data data);
+void	measure_disorder(t_data *data);
+void	parsing(int argc, char **argv, t_data *data);
 int		ft_strcmp(const char *s1, const char *s2);
 void	write_error(void);
 

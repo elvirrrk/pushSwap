@@ -1,3 +1,5 @@
+#include "push_swap.h"
+
 void	init_data(t_data *data)
 {
 	data->a = NULL;

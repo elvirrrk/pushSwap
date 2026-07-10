@@ -1,4 +1,4 @@
-#include "push_swap.h"
+#include "../push_swap.h"
 
 void	ft_lstiter(t_stack *lst, void (*f)(void *))
 {
@@ -9,7 +9,7 @@ void	ft_lstiter(t_stack *lst, void (*f)(void *))
 	node = lst;
 	while (node)
 	{
-		f(node->value); // for write(1, value, 1);
+		f(&node->value); // for write(1, value, 1);
 		node = node->next;
 	}
 }

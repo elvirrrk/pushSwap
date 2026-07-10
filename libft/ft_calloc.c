@@ -1,4 +1,4 @@
-#include "push_swap.h"
+#include "../push_swap.h"
 
 void	*ft_calloc(size_t n, size_t size)
 {

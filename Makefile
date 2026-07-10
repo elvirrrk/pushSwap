@@ -2,14 +2,22 @@ NAME = pushswap.a
 CC = cc
 GFLAGS = -Wall -Werror -Wextra
 AR = ar rcs
-SRC = ft_isdigit \
-	ft_strcmp \
-	ft_split \
-	ft_atoi \
-	ft_lstiter \
-	ft_lstadd_front \
+SRC = ft_atoi \
+	ft_bzero \
+	ft_calloc \
+	ft_isalpha \
+	ft_isdigit \
 	ft_lstadd_back \
+	ft_lstadd_front \
+	ft_lstiter \
+	ft_lstlast \
 	ft_lstnew \
+	ft_split \
+	ft_strlen \
+	ft_substr \
+
+# add only file from libft
+# need to check path to folder libft
 
 SRCS = $(addsuffix .c, $(SRC))
 OBJS = $(addsuffix .o, $(SRC))
