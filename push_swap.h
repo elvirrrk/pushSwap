@@ -7,7 +7,7 @@
 # include <stdio.h> // only for testing, remove after finish
 
 typedef struct	s_status {
-	int	sa;
+	int	sa;//void    sa(t_stack **stack_a);
 	int	sb;
 	int	ss;
 	int	pa;
