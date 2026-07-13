@@ -55,6 +55,7 @@ void	init_data(t_data *data);
 void	measure_disorder(t_data *data);
 void	parsing(int argc, char **argv, t_data *data);
 int		ft_strcmp(const char *s1, const char *s2);
+int		is_valid_number(char *str);
 void	write_error(void);
 
 // libft

@@ -13,23 +13,25 @@ int	check_bench(char *argv, t_data *data)
 	return (1);
 }
 
-int	check_strategy(char *argv, t_data *data)
+int check_strategy(char *argv, t_data *data)
 {
-	t_strategy	strategy;
+    t_strategy strategy;
 
-	if (ft_strcmp(argv,"--simple"))
-		strategy = SIMPLE;
-	else if (ft_strcmp(argv, "--medium"))
-		strategy = MEDIUM;
-	else if (ft_strcmp(argv, "--complex"))
-		strategy = COMPLEX;
-	else if (ft_strcmp(argv, "--adaptive"))
-		strategy = ADAPTIVE;
-	if (data->set_strategy)
-		return (0);
-	data->strategy = strategy;
-	data->set_strategy = 1;
-	return (1);
+    if (ft_strcmp(argv, "--simple") == 0)
+        strategy = SIMPLE;
+    else if (ft_strcmp(argv, "--medium") == 0)
+        strategy = MEDIUM;
+    else if (ft_strcmp(argv, "--complex") == 0)
+        strategy = COMPLEX;
+    else if (ft_strcmp(argv, "--adaptive") == 0)
+        strategy = ADAPTIVE;
+    else
+        return (0);
+    if (data->set_strategy)
+        write_error();
+    data->strategy = strategy;
+    data->set_strategy = 1;
+    return (1);
 }
 
 void	parse_number(char *argv, t_data *data)
@@ -37,9 +39,8 @@ void	parse_number(char *argv, t_data *data)
 	long	num;
 	t_stack	*node;
 
+	is_valid_number(argv);
 	num = ft_atoi(argv);
-	// if (!ft_isdigit(nptr[i])) // check for only numbers
-	// 	write_error();
 	if (num > 2147483647 || -2147483648 < num)
 		write_error();
 	node = data->a;
