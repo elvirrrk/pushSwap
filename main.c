@@ -9,11 +9,12 @@ int main (int argc, char **argv)
 	init_data(&data);
 	parsing(argc, argv, &data); // creating stack, chose strategy, if everything ok
 	measure_disorder(&data);
-	printf("%2.f\n", data.disorder);
+	printf("%f\n", data.disorder);
 	// execute algorithms
 	if (data.bench)
 		printf("%s\n", "find benchmark");
 		// print_benchmark(data_here); // benchmark.c
 	// free_data(&data); // free.c
+	printf("%d\n", data.strategy);
 	return (0);
 }

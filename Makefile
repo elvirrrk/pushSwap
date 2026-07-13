@@ -7,37 +7,6 @@ SRC_DIR = .
 LIBFT_DIR = libft
 OBJ_DIR = obj
 
-# SRCS = $(wildcard$(SRC_DIR)/*.c)
-# LIBFT_SRCS = $(wildcard$(LIBFT_DIR)/*.c)
-
-# OBJS = $(patsubst$(SRC_DIR)/%.c,$(OBJ_DIR)/%.o,$(SRCS))
-# LIBFT_OBJS = $(patsubst$(LIBFT_DIR)/%.c,$(OBJ_DIR)/%.o,$(LIBFT_SRCS))
-
-# ALL_OBJS = $(OBJS) $(LIBFT_OBJS)
-
-# all: $(NAME)
-
-# $(NAME): $(ALL_OBJS)
-# 	$(CC) $(CFLAGS) $(ALL_OBJS) -o $(NAME)
-
-# $(OBJS)/%.o: $(SRC_DIR)/%.c
-# 	@mkdir -p $(dir$@)
-# 	$(CC) $(CFLAGS) -c $< -o $@
-
-# $(OBJS)/libft/%.o: $(LIBFT_DIR)/%.c
-# 	@mkdir -p $(dir$@)
-# 	$(CC) $(CFLAGS) -c $< -o $@
-
-# clean:
-# 	rm -rf $(OBJ_DIR)
-
-# fclean: clean
-# 	rm -f $(NAME)
-
-# re: fclean all
-
-# .PHONY: all clean fclean re 
-
 SRCS = main.c \
 	parsing.c \
 	write_error.c \
@@ -55,7 +24,7 @@ SRCS = main.c \
 	utils.c \
 	init_data.c
 
-LIBFT_SRCS = ft_atoi.c \
+LIBFT_SRCS = ft_atol.c \
 	ft_bzero.c \
 	ft_calloc.c \
 	ft_isalpha.c \

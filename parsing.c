@@ -40,9 +40,8 @@ void	parse_number(char *argv, t_data *data)
 	t_stack	*node;
 
 	is_valid_number(argv);
-	num = ft_atoi(argv);
-	if (num > 2147483647 || -2147483648 < num)
-		write_error();
+	num = ft_atol(argv);
+	printf("%ld\n", num);
 	node = data->a;
 	// check for dup
 	while (node)
@@ -51,9 +50,11 @@ void	parse_number(char *argv, t_data *data)
 			write_error();
 		node = node->next;
 	}
-	node = ft_lstnew(num);
+	node = ft_lstnew((int)num);
+	if (!node)
+		write_error();
 	ft_lstadd_back(&data->a, node);
-	data->size_a += 1;
+	data->size_a++;
 }
 
 void	parsing(int argc, char **argv, t_data *data)
@@ -69,18 +70,14 @@ void	parsing(int argc, char **argv, t_data *data)
     while (i < argc && options < 2)
     {
         result = check_bench(argv[i], data);
-        if (result == -1)
-            write_error();
-        if (result == 1)
+        if (result)
         {
             options++;
             i++;
             continue ;
         }
         result = check_strategy(argv[i], data);
-        if (result == -1)
-            write_error();
-        if (result == 1)
+        if (result)
         {
             options++;
             i++;
@@ -94,8 +91,12 @@ void	parsing(int argc, char **argv, t_data *data)
 	{
 		j = 0;
 		array = ft_split(argv[i], ' ');
+		if (!array)
+			write_error();
 		while (array[j])
         	parse_number(array[j++], data);
+		// free array
+		return ;
 	}
 
 	while (i < argc)

@@ -60,7 +60,7 @@ void	write_error(void);
 
 // libft
 
-int		ft_atoi(const char *nptr);
+long	ft_atol(const char *nptr);
 void	ft_bzero(void *s, size_t n);
 void	*ft_calloc(size_t n, size_t size);
 int		ft_isalpha(int c);

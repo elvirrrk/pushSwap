@@ -1,4 +1,6 @@
-void    measure_disorder(t_data *data)
+#include "push_swap.h"
+
+void	measure_disorder(t_data *data)
 {
     int         total_pairs;
     int         mistakes;
@@ -8,7 +10,7 @@ void    measure_disorder(t_data *data)
     mistakes = 0;
     if (!data->a || !data->a->next)
     {
-        data->disorder = 0.0;
+        data->disorder = 0.00;
         return ;
     }
     node = data->a;
@@ -19,8 +21,5 @@ void    measure_disorder(t_data *data)
         total_pairs++;
         node = node->next;
     }
-    if (total_pairs == 0)
-        data->disorder = 0.0;
-    else
-        data->disorder = (double)mistakes / (double)total_pairs;
+    data->disorder = (double)mistakes / (double)total_pairs;
 }
