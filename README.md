@@ -9,3 +9,9 @@ articles, tutorials, etc.), as well as a description of how AI was used — spec
 which tasks and which parts of the activity.
 ➠ Additional sections may be required depending on the activity (e.g., usage examples,
 feature list, technical choices, etc.)
+
+```
+to start: make
+to check for relink: make make
+run code: ./push_swap (your values)
+```

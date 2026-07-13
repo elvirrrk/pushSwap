@@ -17,8 +17,6 @@ int	ft_atoi(const char *nptr)
 			sign = -1;
 		i++;
 	}
-	if (!ft_isdigit(nptr[i]))
-		write_error();
 	while (ft_isdigit(nptr[i]))
 	{
 		result = result * 10 + nptr[i] - '0';

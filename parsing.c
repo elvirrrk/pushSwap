@@ -37,7 +37,9 @@ void	parse_number(char *argv, t_data *data)
 	long	num;
 	t_stack	*node;
 
-	num = ft_atoi(argv); // in atoi is check for only numbers
+	num = ft_atoi(argv);
+	// if (!ft_isdigit(nptr[i])) // check for only numbers
+	// 	write_error();
 	if (num > 2147483647 || -2147483648 < num)
 		write_error();
 	node = data->a;

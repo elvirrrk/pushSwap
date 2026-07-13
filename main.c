@@ -1,13 +1,13 @@
 #include "push_swap.h"
 
-int main (int argv, char **argc)
+int main (int argc, char **argv)
 {
 	t_data data;
 
-	if (argv <= 2)
+	if (argc <= 2)
 		return (0);
 	init_data(&data);
-	parsing(argv, argc, &data); // creating stack, chose strategy, if everything ok
+	parsing(argc, argv, &data); // creating stack, chose strategy, if everything ok
 	measure_disorder(&data);
 	printf("%2.f\n", data.disorder);
 	// execute algorithms
