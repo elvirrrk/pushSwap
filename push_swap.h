@@ -25,6 +25,14 @@ typedef struct	s_stack {
 	struct s_stack	*next;
 } t_stack;
 
+/* typedef	struct s_sack//Proposition :doing an double node + MAYBE ciruclar
+{
+	int	value;
+	struct s_stack	*next;
+	struct s_stack	*prev;
+}	t_stack; */
+
+
 typedef enum e_strategy {
 	SIMPLE,
 	MEDIUM,
